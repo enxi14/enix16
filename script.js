@@ -1,18 +1,18 @@
-// script.js
+
 document.addEventListener("DOMContentLoaded", () => {
-    const apiKey = "YOUR_API_KEY"; // Replace with your actual API key
+    const apiKey = "YOUR_API_KEY"; // Replace with key
     const weatherData = document.getElementById("weatherData");
     const forecastData = document.getElementById("forecastData");
     const cityInput = document.getElementById("cityInput");
     const searchBtn = document.getElementById("searchBtn");
 
-    // Function to fetch current weather data
+    
     async function getCurrentWeather(city) {
         try {
-            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`);
+            const response = await fetch(`https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=Seattle`);
             const data = await response.json();
 
-            // Display current weather data
+            
             weatherData.innerHTML = `
                 <p>Temperature: ${data.main.temp} &#8451;</p>
                 <p>Humidity: ${data.main.humidity}%</p>
@@ -25,10 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Function to fetch 5-day weather forecast
+    
     async function getWeatherForecast(city) {
         try {
-            const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`);
+            const response = await fetch(`https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=Seattle`);
             const data = await response.json();
 
             // Display 5-day forecast data
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Event listener for the search button
+    
     searchBtn.addEventListener("click", () => {
         const city = cityInput.value.trim();
         if (city !== "") {
